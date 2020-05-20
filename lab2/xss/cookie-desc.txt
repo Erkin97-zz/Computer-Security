@@ -1,0 +1,7 @@
+As we discovered we run any script using the posting page
+and we need to only send the cookies to our server.
+Cookies are saved in the document.cookie, so we can just the fetch function
+to send a simple GET request with cookies added.
+
+ref fetch: https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch
+ref cookie: https://developer.mozilla.org/en-US/docs/Web/API/Document/cookie
