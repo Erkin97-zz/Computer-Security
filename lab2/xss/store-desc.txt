@@ -1,9 +1,9 @@
-Our backend just puts text message to the dom without checking it. So the dom is the tree based we can 
-just send html element in your request. 
+Our server just puts message to the dom without checking it. The dom is the tree based and we update it
+by sending html element in message;
 
-By the same logic we abuse this bug in the any way and put html code to your website.
+```
+page += '<p>' + p + '</p>' + '\n' // vulnerable code
+```
+
+By the same logic we can abuse this bug in the any way and any put html element to your website.
 for example: <iframe width="560" height="315" src="https://www.youtube.com/embed/Yw6u6YkTgQ4" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-
-page += '<p>' + p + '</p>' + '\n' -> this is our bad code
-
-Solution: https://stackoverflow.com/questions/11506739/how-do-i-prevent-html-javascript-code-from-running-on-a-textbox
