@@ -1,0 +1,9 @@
+Our backend just puts text message to the dom without checking it. So the dom is the tree based we can 
+just send html element in your request. 
+
+By the same logic we abuse this bug in the any way and put html code to your website.
+for example: <iframe src="https://www.youtube.com/watch?v=Yw6u6YkTgQ4"/>
+
+page += '<p>' + p + '</p>' + '\n' -> this is our bad code
+
+Solution: https://stackoverflow.com/questions/11506739/how-do-i-prevent-html-javascript-code-from-running-on-a-textbox
