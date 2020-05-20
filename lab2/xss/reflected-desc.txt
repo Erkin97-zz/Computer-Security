@@ -1,0 +1,3 @@
+I found it same as the first task. Just insert script to the message box and copy the URI.
+
+In the server code, it just takes the arguments from url paremeters and without checking updates dom with it.
