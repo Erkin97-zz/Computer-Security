@@ -2,7 +2,7 @@ Our backend just puts text message to the dom without checking it. So the dom is
 just send html element in your request. 
 
 By the same logic we abuse this bug in the any way and put html code to your website.
-for example: <iframe src="https://www.youtube.com/watch?v=Yw6u6YkTgQ4"/>
+for example: <iframe width="560" height="315" src="https://www.youtube.com/embed/Yw6u6YkTgQ4" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 page += '<p>' + p + '</p>' + '\n' -> this is our bad code
 
