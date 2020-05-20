@@ -1,0 +1,8 @@
+At first I thought that it's parsing your string
+somehow to remove scripts, but it seems it just blocks additional even to be run.
+So I tried to pass first simple html elements like "<b>bold</b>" and it was working.
+We can still pass html element, but can't run script. In order to avoid I thought I can make button html element,
+if u click it will alert, but you can do more easier. If you can pass iframe as an html element, then you can 
+assign onload function to run, which will have different context. And it worked!
+
+ref for iframe code: https://support.google.com/youtube/answer/171780?hl=en
