@@ -1,0 +1,73 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+
+# TODO: relax the version requirement
+Vagrant.require_version ">=2.2.5", "<=2.2.9"
+Vagrant.configure("2") do |config|
+  
+  config.vm.box = "ubuntu/xenial32"
+  config.ssh.forward_x11 = true
+  config.vm.box_version = "20180917.0.0"
+  
+  config.vm.synced_folder ".","/vagrant"
+
+  
+  
+   config.vm.provider "virtualbox" do |vb|
+     # Display the VirtualBox GUI when booting the machine
+  #   vb.gui = true
+  #
+     # Customize the amount of memory on the VM:
+     vb.memory = "512"
+   end
+  
+   config.vm.provision "shell", inline: <<-SHELL
+     sed -i 's/us.archive/kr.archive/g' /etc/apt/sources.list
+     apt-get update
+     apt-get install make gcc gdb python3 python3-pip tmux vim python python-pip libssl-dev -y
+     python3 -m pip install --upgrade pip
+     python3 -m pip install --upgrade pwntools
+     
+     echo 0 | tee /proc/sys/kernel/randomize_va_space
+
+     mkdir /challenges
+     cp /vagrant/chal0/chal0 /challenges/chal0
+     cp /vagrant/chal1/chal1 /challenges/chal1
+     cp /vagrant/chal2/chal2 /challenges/chal2
+     cp /vagrant/chal3/chal3 /challenges/chal3
+     
+     useradd chal0
+     useradd chal1
+     useradd chal2
+     useradd chal3
+
+     echo content0 > /challenges/flag0
+     echo content1 > /challenges/flag1
+     echo content2 > /challenges/flag2
+     echo content3 > /challenges/flag3
+     
+
+     chown chal0:chal0 /challenges/flag0
+     chown chal1:chal1 /challenges/flag1
+     chown chal2:chal2 /challenges/flag2
+     chown chal3:chal3 /challenges/flag3
+
+     chmod 440 /challenges/flag0
+     chmod 440 /challenges/flag1
+     chmod 440 /challenges/flag2
+     chmod 440 /challenges/flag3
+
+     chown vagrant:chal0 /challenges/chal0
+     chown vagrant:chal1 /challenges/chal1
+     chown vagrant:chal2 /challenges/chal2
+     chown vagrant:chal3 /challenges/chal3
+
+     chmod 2755 /challenges/chal0
+     chmod 2755 /challenges/chal1
+     chmod 2755 /challenges/chal2
+     chmod 2755 /challenges/chal3
+
+     rm /etc/sudoers.d/vagrant
+
+   SHELL
+end
