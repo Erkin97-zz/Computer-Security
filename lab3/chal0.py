@@ -6,6 +6,7 @@ password = 'p4sSw0Rd\n' # \n is not the part of password. it needed so scanf can
 
 from pwn import *
 
-p = process('/challenges/chal0')
-p.send(password)
-p.interactive()
+if __name__ == '__main__':
+	p = process('/challenges/chal0')
+	p.send(password)
+	p.interactive()
